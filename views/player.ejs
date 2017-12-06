@@ -1,0 +1,39 @@
+<%- include ./partial/header %>
+    <% if(err) {%>
+      <h1 style="color: red"><%= err%></h1>
+    <% } %>
+    <form action="/players" method="post">
+      <input type="text" name="name" placeholder="Input player name">
+      <input type="text" name="job" placeholder="Input job">
+      <button type="submit">Save</button>
+    </form>
+    <br><br>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Job</th>
+          <th>Level</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(players.length > 0) {
+              players.forEach(player => {
+        %>
+        <tr>
+          <td><%= player.name %></td>
+          <td><%= player.job %></td>
+          <td><%= player.levelDesc() %></td>
+          <td>
+            <a href="/players/edit/<%= player.id %>">EDIT</a>
+            <a href="/players/delete/<%= player.id %>">DELETE</a>
+          </td>
+        </tr>
+
+
+        <% })} %>
+      </tbody>
+    </table>
+  </body>
+</html>

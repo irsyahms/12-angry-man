@@ -1,0 +1,12 @@
+<%- include ./partial/header %>
+    <% if(err) {%>
+      <h1 style="color: red"><%= err%></h1>
+    <% } %>
+    <form action="/players/edit/<%= player.id%>" method="post">
+      <input type="text" name="name" value="<%=player.name%>" placeholder="Input player name">
+      <input type="text" name="job" value="<%=player.job%>" placeholder="Input job">
+      <button type="submit">Save</button>
+    </form>
+
+  </body>
+</html>

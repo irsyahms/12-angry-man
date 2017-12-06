@@ -1,0 +1,39 @@
+<%- include ./partial/header %>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Quest</th>
+          <th>Detail</th>
+          <th>Level</th>
+          <th>Players</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(quests.length > 0) {
+              quests.forEach(quest => {
+        %>
+        <tr>
+          <td><%= quest.quest %></td>
+          <td><%= quest.detail %></td>
+          <td><%= quest.level %></td>
+          <td>
+            <ol>
+              <% if(quest.Players.length > 0) {
+                  quest.Players.forEach(player => {
+              %>
+                <li><%= player.name %></li>
+              <% })} %>
+            </ol>
+          </td>
+          <td>
+            <a href="/quests/<%=quest.id%>/invite %>">INVITE PLAYER</a>
+          </td>
+        </tr>
+
+
+        <% })} %>
+      </tbody>
+    </table>
+  </body>
+</html>
